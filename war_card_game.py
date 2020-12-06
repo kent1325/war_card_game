@@ -12,9 +12,9 @@ from game_settings import Settings
 
 
 class War:
-    """Overall class to initialize game"""
+    """Overall class to game behavior"""
     def __init__(self):
-        """Load game settings and create game instance"""
+        """Load game settings and initialize the game"""
         self.playing_field = []
         self.rounds_played = 0
         self.is_game_over = False
@@ -29,12 +29,13 @@ class War:
         # Initialize Players
         self.players = [Player(name=f"Player {i}") for i in range(1, self.settings.number_of_players + 1)]
 
+        # Give player game cards
         n_cards = len(self.deck)//len(self.players)
         for player in self.players:
-            player.give_cards(self.deck, n_cards)
+            player.initialize_hand(self.deck, n_cards)
 
     def run_game(self):
-        """Actually play the game"""
+        """Start the main loop for the game"""
         while self.rounds_played < 3000:
             if len(self.players) == 1:
                 print(f"The ultimate champion of War is: {self.players[0]} and won within {self.rounds_played} rounds")

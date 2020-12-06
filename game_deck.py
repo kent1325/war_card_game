@@ -3,6 +3,7 @@ from game_card import Card
 
 
 class Deck:
+    """A class to represent a card deck."""
     def __init__(self, settings):
         """Card Deck instance"""
         self.deck = []
@@ -11,7 +12,7 @@ class Deck:
         self.init_deck(self.settings)
 
     def init_deck(self, settings):
-        # Fill deck with cards, from the settings window
+        """Fill deck with cards, from the settings window"""
         for suit in settings.suits:
             for i, value in enumerate(settings.values):
                 self.deck.append(Card(value=value, suit=suit, name=settings.names[i]))
